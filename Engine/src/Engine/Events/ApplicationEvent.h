@@ -3,8 +3,6 @@
 #include "Engine/Core.h"
 #include "Event.h"
 
-#include <sstream>
-
 namespace Engine {
 
 	class ENGINE_API WindowResizeEvent : public Event

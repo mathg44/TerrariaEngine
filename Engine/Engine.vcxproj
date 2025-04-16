@@ -56,7 +56,8 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>engpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>ENG_PLATFORM_WINDOWS;ENG_BUILD_DLL;ENG_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\SDL2\include;vendor\SDL2_image\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -78,7 +79,8 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>engpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>ENG_PLATFORM_WINDOWS;ENG_BUILD_DLL;ENG_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\SDL2\include;vendor\SDL2_image\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -112,10 +114,14 @@
     <ClInclude Include="src\Engine\Events\KeyEvent.h" />
     <ClInclude Include="src\Engine\Events\MouseEvent.h" />
     <ClInclude Include="src\Engine\Log.h" />
+    <ClInclude Include="src\engpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Engine\Application.cpp" />
     <ClCompile Include="src\Engine\Log.cpp" />
+    <ClCompile Include="src\engpch.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
