@@ -25,6 +25,7 @@ project "Engine"
 
 	includedirs
 	{
+		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
 		"%{prj.name}/vendor/SDL2/include",
         "%{prj.name}/vendor/SDL2_image/include"

@@ -9,3 +9,6 @@
 #else
 	#error Engine only support Windows
 #endif
+
+// Bit Macro
+#define BIT(x) (1 << x)
