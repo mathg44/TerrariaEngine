@@ -33,7 +33,7 @@ namespace Engine {
 		inline unsigned int GetHeight() const { return m_Data.Height; }
 
 		// Window Attributes
-		inline void SetEventCallback(const EventCallbackFn& callback) { m_Data.EventCallBack = callback; }
+		inline void SetEventCallback(const EventCallbackFn& callback) { m_Data.EventCallback = callback; }
 		void SetVSync(bool enabled);
 		bool IsVSync() const;
 
@@ -50,7 +50,7 @@ namespace Engine {
 			unsigned int Width, Height;
 			bool VSync;
 
-			EventCallbackFn EventCallBack;
+			EventCallbackFn EventCallback;
 		};
 
 		WindowData m_Data;
