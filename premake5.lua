@@ -34,6 +34,18 @@ project "Engine"
         "%{prj.name}/vendor/SDL2_image/include"
 	}
 
+	libdirs
+	{
+		"%{prj.name}/vendor/SDL2/lib/x64",
+		"%{prj.name}/vendor/SDL2_image/lib/x64"
+	}
+
+	links
+	{
+		"SDL2.lib",
+		"SDL2_image.lib"
+	}
+
 	filter "system:windows"
 		cppdialect "C++23"
 		staticruntime "On"
@@ -49,7 +61,9 @@ project "Engine"
 
 		postbuildcommands
 		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/TerrariaClone")
+			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/TerrariaClone"),
+			("{COPY} %{prj.location}/vendor/SDL2/lib/x64/SDL2.dll ../bin/" .. outputdir .. "/TerrariaClone"),
+			("{COPY} %{prj.location}/vendor/SDL2_image/lib/x64/SDL2_image.dll ../bin/" .. outputdir .. "/TerrariaClone")
 		}
 
 	filter "configurations:Debug"
@@ -82,9 +96,18 @@ project "TerrariaClone"
 		"Engine/src"
 	}
 
+	libdirs
+	{
+		"Engine/vendor/SDL2/lib/x64",
+		"Engine/vendor/SDL2_image/lib/x64"
+	}
+
 	links
 	{
-		"Engine"
+		"Engine",
+		"SDL2main.lib",
+		"SDL2.lib",
+		"SDL2_image.lib"
 	}
 
 	filter "system:windows"

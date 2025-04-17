@@ -71,10 +71,14 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>vendor\SDL2\lib\x64;vendor\SDL2_image\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ImportLibrary>..\bin\Debug-windows-x86_64\Engine\Engine.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Debug-windows-x86_64\Engine\Engine.dll\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\Engine\Engine.dll ..\bin\Debug-windows-x86_64\TerrariaClone &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\Engine\Engine.dll ..\bin\Debug-windows-x86_64\TerrariaClone &gt; nul)</Command>
+      <Command>IF EXIST ..\bin\Debug-windows-x86_64\Engine\Engine.dll\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\Engine\Engine.dll ..\bin\Debug-windows-x86_64\TerrariaClone &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\Engine\Engine.dll ..\bin\Debug-windows-x86_64\TerrariaClone &gt; nul)
+IF EXIST $(ProjectDir)\vendor\SDL2\lib\x64\SDL2.dll\ (xcopy /Q /E /Y /I $(ProjectDir)\vendor\SDL2\lib\x64\SDL2.dll ..\bin\Debug-windows-x86_64\TerrariaClone &gt; nul) ELSE (xcopy /Q /Y /I $(ProjectDir)\vendor\SDL2\lib\x64\SDL2.dll ..\bin\Debug-windows-x86_64\TerrariaClone &gt; nul)
+IF EXIST $(ProjectDir)\vendor\SDL2_image\lib\x64\SDL2_image.dll\ (xcopy /Q /E /Y /I $(ProjectDir)\vendor\SDL2_image\lib\x64\SDL2_image.dll ..\bin\Debug-windows-x86_64\TerrariaClone &gt; nul) ELSE (xcopy /Q /Y /I $(ProjectDir)\vendor\SDL2_image\lib\x64\SDL2_image.dll ..\bin\Debug-windows-x86_64\TerrariaClone &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -98,10 +102,14 @@
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>vendor\SDL2\lib\x64;vendor\SDL2_image\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ImportLibrary>..\bin\Release-windows-x86_64\Engine\Engine.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Release-windows-x86_64\Engine\Engine.dll\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\Engine\Engine.dll ..\bin\Release-windows-x86_64\TerrariaClone &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\Engine\Engine.dll ..\bin\Release-windows-x86_64\TerrariaClone &gt; nul)</Command>
+      <Command>IF EXIST ..\bin\Release-windows-x86_64\Engine\Engine.dll\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\Engine\Engine.dll ..\bin\Release-windows-x86_64\TerrariaClone &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\Engine\Engine.dll ..\bin\Release-windows-x86_64\TerrariaClone &gt; nul)
+IF EXIST $(ProjectDir)\vendor\SDL2\lib\x64\SDL2.dll\ (xcopy /Q /E /Y /I $(ProjectDir)\vendor\SDL2\lib\x64\SDL2.dll ..\bin\Release-windows-x86_64\TerrariaClone &gt; nul) ELSE (xcopy /Q /Y /I $(ProjectDir)\vendor\SDL2\lib\x64\SDL2.dll ..\bin\Release-windows-x86_64\TerrariaClone &gt; nul)
+IF EXIST $(ProjectDir)\vendor\SDL2_image\lib\x64\SDL2_image.dll\ (xcopy /Q /E /Y /I $(ProjectDir)\vendor\SDL2_image\lib\x64\SDL2_image.dll ..\bin\Release-windows-x86_64\TerrariaClone &gt; nul) ELSE (xcopy /Q /Y /I $(ProjectDir)\vendor\SDL2_image\lib\x64\SDL2_image.dll ..\bin\Release-windows-x86_64\TerrariaClone &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -114,11 +122,13 @@
     <ClInclude Include="src\Engine\Events\KeyEvent.h" />
     <ClInclude Include="src\Engine\Events\MouseEvent.h" />
     <ClInclude Include="src\Engine\Log.h" />
+    <ClInclude Include="src\Window.h" />
     <ClInclude Include="src\engpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Engine\Application.cpp" />
     <ClCompile Include="src\Engine\Log.cpp" />
+    <ClCompile Include="src\Window.cpp" />
     <ClCompile Include="src\engpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
