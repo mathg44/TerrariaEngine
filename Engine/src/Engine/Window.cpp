@@ -54,9 +54,9 @@ namespace Engine {
 
     void Window::OnUpdate()
     {
-        m_Renderer->Clear();
+        //m_Renderer->Clear();
 
-        m_Renderer->Present();
+        //m_Renderer->Present();
 
         SDL_Event e;
         while (SDL_PollEvent(&e))

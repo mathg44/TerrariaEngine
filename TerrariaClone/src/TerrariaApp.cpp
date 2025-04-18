@@ -24,6 +24,7 @@ public:
 	TerrariaApp()
 	{
 		PushLayer(new ExampleLayer());
+		PushOverlay(new Engine::ImGuiLayer());
 	}
 
 	~TerrariaApp()

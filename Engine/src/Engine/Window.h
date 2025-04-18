@@ -31,6 +31,8 @@ namespace Engine {
 
 		inline unsigned int GetWidth() const { return m_Data.Width; }
 		inline unsigned int GetHeight() const { return m_Data.Height; }
+		inline Renderer& GetRenderer() { return *m_Renderer; }
+		inline SDL_Window* GetSDLWindow() { return m_SDLWindow; }
 
 		// Window Attributes
 		inline void SetEventCallback(const EventCallbackFn& callback) { m_Data.EventCallback = callback; }

@@ -23,15 +23,32 @@ project "Engine"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
 	}
+
+	files
+    {
+        "%{prj.name}/vendor/imgui/imgui.cpp",
+        "%{prj.name}/vendor/imgui/imgui_demo.cpp",
+        "%{prj.name}/vendor/imgui/imgui_draw.cpp",
+        "%{prj.name}/vendor/imgui/imgui_tables.cpp",
+        "%{prj.name}/vendor/imgui/imgui_widgets.cpp",
+        "%{prj.name}/vendor/imgui/backends/imgui_impl_sdl2.cpp",
+        "%{prj.name}/vendor/imgui/backends/imgui_impl_sdlrenderer2.cpp"
+    }
+    
+    -- Then exclude ImGui files from using PCH
+    filter { "files:Engine/vendor/imgui/**.cpp" }
+        flags { "NoPCH" }
+    filter { }
 
 	includedirs
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
 		"%{prj.name}/vendor/SDL2/include",
-        "%{prj.name}/vendor/SDL2_image/include"
+        "%{prj.name}/vendor/SDL2_image/include",
+		"%{prj.name}/vendor/imgui"
 	}
 
 	libdirs
@@ -133,3 +150,4 @@ project "TerrariaClone"
 		defines "ENG_RELEASE"
 		buildoptions "/MD"
 		optimize "On"
+

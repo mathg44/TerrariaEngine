@@ -14,6 +14,8 @@ namespace Engine {
 		void Present();
 		inline void SetClearColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a = 255) { m_ClearColor = { r, g, b, a }; }
 		void SetDrawColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a = 255); 
+
+		inline SDL_Renderer* GetSDLRenderer() { return m_SDLRenderer; }
 	private:
 		void Init(SDL_Window* window);
 		void ShutDown();
