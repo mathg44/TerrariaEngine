@@ -17,6 +17,16 @@ namespace Engine {
 
 	}
 
+	void Application::PushLayer(Layer* layer)
+	{
+		m_LayerStack.PushLayer(layer);
+	}
+
+	void Application::PushOverlay(Layer* layer)
+	{
+		m_LayerStack.PushOverlay(layer);
+	}
+
 	void Application::OnEvent(Event& e)
 	{
 		ENG_CORE_TRACE("{0}", e.ToString());
@@ -26,6 +36,13 @@ namespace Engine {
 		// If the Event e is of type <T>, calls the binded function.
 		dispatcher.Dispatch<WindowClosedEvent>(BIND_EVENT_FN(OnWindowClose));
 		dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FN(OnWindowResize));
+
+		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
+		{
+			(*--it)->OnEvent(e);
+			if (e.IsHandled())
+				break;
+		}
 	}
 
 	bool Application::OnWindowClose(WindowClosedEvent& e)
@@ -41,10 +58,17 @@ namespace Engine {
 		return true;
 	}
 
+
+
 	void Application::Run()
 	{
 		while (m_IsRunning)
 		{
+			for (Layer* layer : m_LayerStack)
+			{
+				layer->OnUpdate();
+			}
+
 			m_Window->OnUpdate();
 		}
 	}

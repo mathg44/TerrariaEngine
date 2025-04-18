@@ -47,13 +47,16 @@ namespace Engine {
             m_Data.Height, 
             SDL_WINDOW_RESIZABLE);
 
+        m_Renderer = std::make_unique<Renderer>(m_SDLWindow);
+
         SetVSync(true);
     }
 
     void Window::OnUpdate()
     {
-        // Render stuff here
+        m_Renderer->Clear();
 
+        m_Renderer->Present();
 
         SDL_Event e;
         while (SDL_PollEvent(&e))

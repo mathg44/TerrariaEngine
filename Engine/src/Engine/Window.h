@@ -1,7 +1,7 @@
 #pragma once
-#include "engpch.h"
 #include "Engine/Core.h"
 #include "Engine/Events/Event.h"
+#include "Renderer.h"
 #include <SDL.h>
 
 namespace Engine {
@@ -43,6 +43,7 @@ namespace Engine {
 		virtual void ShutDown();
 	private:
 		SDL_Window* m_SDLWindow;
+		std::unique_ptr<Renderer> m_Renderer;
 
 		struct WindowData
 		{

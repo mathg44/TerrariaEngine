@@ -68,10 +68,12 @@ project "Engine"
 
 	filter "configurations:Debug"
 		defines "ENG_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "ENG_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 project "TerrariaClone"
@@ -124,8 +126,10 @@ project "TerrariaClone"
 
 	filter "configurations:Debug"
 		defines "ENG_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "ENG_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
