@@ -9,10 +9,14 @@ workspace "TerrariaEngine"
 
 	outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+	startproject "TerrariaClone"
+
 project "Engine"
 	location "Engine"
 	kind "SharedLib"
 	language "C++"
+	staticruntime "off"
+
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -65,7 +69,6 @@ project "Engine"
 
 	filter "system:windows"
 		cppdialect "C++23"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -85,18 +88,20 @@ project "Engine"
 
 	filter "configurations:Debug"
 		defines "ENG_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "ENG_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 project "TerrariaClone"
 	location "TerrariaClone"
 	kind "ConsoleApp"
 	language "C++"
+	staticruntime "off"
+
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -131,7 +136,6 @@ project "TerrariaClone"
 
 	filter "system:windows"
 		cppdialect "C++23"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -143,11 +147,11 @@ project "TerrariaClone"
 
 	filter "configurations:Debug"
 		defines "ENG_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "ENG_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 

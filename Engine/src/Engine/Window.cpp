@@ -5,6 +5,9 @@
 #include "Engine/Events/KeyEvent.h"
 #include "Engine/Events/MouseEvent.h"
 
+#include "imgui.h"
+#include "backends/imgui_impl_sdl2.h"
+
 namespace Engine {
 
     static bool s_SDLInitialized = false;
@@ -35,7 +38,7 @@ namespace Engine {
         if (!s_SDLInitialized)
         {
             int success = SDL_Init(SDL_INIT_VIDEO);
-            ENG_CORE_ASSERT(success, "Could not initialize SDL!");
+            ENG_CORE_ASSERT(success == 0, "Could not initialize SDL!");
 
             s_SDLInitialized = true;
         }
@@ -61,6 +64,9 @@ namespace Engine {
         SDL_Event e;
         while (SDL_PollEvent(&e))
         {
+            // Forward the event to ImGui
+            ImGui_ImplSDL2_ProcessEvent(&e);
+
             switch (e.type)
             {
             case SDL_QUIT:
