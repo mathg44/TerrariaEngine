@@ -1,17 +1,19 @@
 #include "engpch.h"
 #include "Input.h"
 
+#include <SDL.h>
+
 namespace Engine {
 
 	Input* Input::s_Instance = new Input();
 
-	bool Input::IsKeyPressed(SDL_Scancode key)
+	bool Input::IsKeyPressed(int keyCode)
 	{
 		const Uint8* keyboardState = SDL_GetKeyboardState(NULL);
-		return keyboardState[key] != 0;
+		return keyboardState[keyCode] != 0;
 	}
 
-	bool Input::IsMouseButtonPressed(Uint8 button)
+	bool Input::IsMouseButtonPressed(int button)
 	{
 		const Uint32 mouseState = SDL_GetMouseState(NULL, NULL);
 		return (mouseState & SDL_BUTTON(button)) != 0;

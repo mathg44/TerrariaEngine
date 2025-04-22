@@ -1,6 +1,5 @@
 #pragma once
 #include "Engine/Core.h"
-#include <SDL.h>
 
 namespace Engine {
 
@@ -9,10 +8,10 @@ namespace Engine {
 	public:
 
 		// Keyboard state
-		static bool IsKeyPressed(SDL_Scancode key);
+		static bool IsKeyPressed(int keyCode);
 
 		// Mouse State
-		static bool IsMouseButtonPressed(Uint8 button);
+		static bool IsMouseButtonPressed(int button);
 		static std::pair<float, float> GetMousePosition();
 		static float GetMouseX();
 		static float GetMouseY();

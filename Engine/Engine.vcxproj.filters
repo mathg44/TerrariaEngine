@@ -13,6 +13,12 @@
     <Filter Include="src\Engine\ImGui">
       <UniqueIdentifier>{BC1B88A8-A814-A7FA-D146-8C7FBD9E8606}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Platform">
+      <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Platform\SDL">
+      <UniqueIdentifier>{9322C8DF-7F1B-E731-A84D-CCB694A5C63D}</UniqueIdentifier>
+    </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
     </Filter>
@@ -51,6 +57,12 @@
     <ClInclude Include="src\Engine\ImGui\ImGuiLayer.h">
       <Filter>src\Engine\ImGui</Filter>
     </ClInclude>
+    <ClInclude Include="src\Engine\Input.h">
+      <Filter>src\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\KeyCodes.h">
+      <Filter>src\Engine</Filter>
+    </ClInclude>
     <ClInclude Include="src\Engine\Layer.h">
       <Filter>src\Engine</Filter>
     </ClInclude>
@@ -60,16 +72,24 @@
     <ClInclude Include="src\Engine\Log.h">
       <Filter>src\Engine</Filter>
     </ClInclude>
+    <ClInclude Include="src\Engine\MouseButtonCodes.h">
+      <Filter>src\Engine</Filter>
+    </ClInclude>
     <ClInclude Include="src\Engine\Renderer.h">
       <Filter>src\Engine</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Window.h">
       <Filter>src\Engine</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\SDL\SDLRenderer.h">
+      <Filter>src\Platform\SDL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\SDL\SDLWindow.h">
+      <Filter>src\Platform\SDL</Filter>
+    </ClInclude>
     <ClInclude Include="src\engpch.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Input.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Engine\Application.cpp">
@@ -77,6 +97,9 @@
     </ClCompile>
     <ClCompile Include="src\Engine\ImGui\ImGuiLayer.cpp">
       <Filter>src\Engine\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Input.cpp">
+      <Filter>src\Engine</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\Layer.cpp">
       <Filter>src\Engine</Filter>
@@ -87,11 +110,11 @@
     <ClCompile Include="src\Engine\Log.cpp">
       <Filter>src\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\Renderer.cpp">
-      <Filter>src\Engine</Filter>
+    <ClCompile Include="src\Platform\SDL\SDLRenderer.cpp">
+      <Filter>src\Platform\SDL</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\Window.cpp">
-      <Filter>src\Engine</Filter>
+    <ClCompile Include="src\Platform\SDL\SDLWindow.cpp">
+      <Filter>src\Platform\SDL</Filter>
     </ClCompile>
     <ClCompile Include="src\engpch.cpp">
       <Filter>src</Filter>
@@ -117,6 +140,5 @@
     <ClCompile Include="vendor\imgui\imgui_widgets.cpp">
       <Filter>vendor\imgui</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\Input.cpp" />
   </ItemGroup>
 </Project>

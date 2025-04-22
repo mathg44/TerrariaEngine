@@ -5,6 +5,8 @@
 #include "backends/imgui_impl_sdlrenderer2.h"
 #include "Engine/Application.h"
 
+#include <SDL.h>
+
 namespace Engine {
 
 	ImGuiLayer::ImGuiLayer()
@@ -31,8 +33,8 @@ namespace Engine {
 		ImGui::StyleColorsDark();
 		// Setup Platform/Renderer backends
 		Application& app = Application::Get();
-		SDL_Window* sdlWindow = app.GetWindow().GetSDLWindow();
-		SDL_Renderer* sdlRenderer = app.GetWindow().GetRenderer().GetSDLRenderer();
+		SDL_Window* sdlWindow = static_cast<SDL_Window*>(app.GetWindow().GetNativeWindow());
+		SDL_Renderer* sdlRenderer = static_cast<SDL_Renderer*>(app.GetWindow().GetRenderer().GetNativeRenderer());
 
 		ImGui_ImplSDL2_InitForSDLRenderer(sdlWindow, sdlRenderer);
 		ImGui_ImplSDLRenderer2_Init(sdlRenderer);
@@ -60,7 +62,7 @@ namespace Engine {
 		static bool show = true;
 		ImGui::ShowDemoWindow(&show);
 
-		SDL_Renderer* sdlRenderer = app.GetWindow().GetRenderer().GetSDLRenderer();
+		SDL_Renderer* sdlRenderer = static_cast<SDL_Renderer*>(app.GetWindow().GetRenderer().GetNativeRenderer());
 
 		// Rendering
 		ImGui::Render();

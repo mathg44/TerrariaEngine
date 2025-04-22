@@ -113,7 +113,6 @@ IF EXIST $(ProjectDir)\vendor\SDL2_image\lib\x64\SDL2_image.dll\ (xcopy /Q /E /Y
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Engine\Input.h" />
     <ClInclude Include="src\Engine.h" />
     <ClInclude Include="src\Engine\Application.h" />
     <ClInclude Include="src\Engine\Core.h" />
@@ -123,22 +122,27 @@ IF EXIST $(ProjectDir)\vendor\SDL2_image\lib\x64\SDL2_image.dll\ (xcopy /Q /E /Y
     <ClInclude Include="src\Engine\Events\KeyEvent.h" />
     <ClInclude Include="src\Engine\Events\MouseEvent.h" />
     <ClInclude Include="src\Engine\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Engine\Input.h" />
+    <ClInclude Include="src\Engine\KeyCodes.h" />
     <ClInclude Include="src\Engine\Layer.h" />
     <ClInclude Include="src\Engine\LayerStack.h" />
     <ClInclude Include="src\Engine\Log.h" />
+    <ClInclude Include="src\Engine\MouseButtonCodes.h" />
     <ClInclude Include="src\Engine\Renderer.h" />
     <ClInclude Include="src\Engine\Window.h" />
+    <ClInclude Include="src\Platform\SDL\SDLRenderer.h" />
+    <ClInclude Include="src\Platform\SDL\SDLWindow.h" />
     <ClInclude Include="src\engpch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Engine\Input.cpp" />
     <ClCompile Include="src\Engine\Application.cpp" />
     <ClCompile Include="src\Engine\ImGui\ImGuiLayer.cpp" />
+    <ClCompile Include="src\Engine\Input.cpp" />
     <ClCompile Include="src\Engine\Layer.cpp" />
     <ClCompile Include="src\Engine\LayerStack.cpp" />
     <ClCompile Include="src\Engine\Log.cpp" />
-    <ClCompile Include="src\Engine\Renderer.cpp" />
-    <ClCompile Include="src\Engine\Window.cpp" />
+    <ClCompile Include="src\Platform\SDL\SDLRenderer.cpp" />
+    <ClCompile Include="src\Platform\SDL\SDLWindow.cpp" />
     <ClCompile Include="src\engpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

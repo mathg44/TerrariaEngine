@@ -1,27 +1,21 @@
 #pragma once
 #include "Engine/Core.h"
-#include "SDL.h"
+
+struct SDL_Window;
 
 namespace Engine {
 
 	class ENGINE_API Renderer
 	{
 	public:
-		Renderer(SDL_Window* window);
-		~Renderer();
+		static Renderer* Create(void* window);
+		virtual ~Renderer() = default;
 
-		void Clear();
-		void Present();
-		inline void SetClearColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a = 255) { m_ClearColor = { r, g, b, a }; }
-		void SetDrawColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a = 255); 
+		virtual void Clear() = 0;
+		virtual void Present() = 0;
+		virtual void SetClearColor(unsigned char r, unsigned char g, unsigned char b, unsigned char a = 255) = 0;
+		virtual void SetDrawColor(unsigned char r, unsigned char g, unsigned char b, unsigned char a = 255) = 0;
 
-		inline SDL_Renderer* GetSDLRenderer() { return m_SDLRenderer; }
-	private:
-		void Init(SDL_Window* window);
-		void ShutDown();
-	private:
-		SDL_Renderer* m_SDLRenderer;
-		SDL_Color m_ClearColor;
-		SDL_Color m_DrawColor;
+		virtual void* GetNativeRenderer() const = 0;
 	};
 }

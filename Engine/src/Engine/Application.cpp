@@ -76,8 +76,7 @@ namespace Engine {
 			}
 
 			// Testing Input
-			auto [x, y] = Input::GetMousePosition();
-			ENG_CORE_TRACE("{0}, {1}", x, y);
+			//auto [x, y] = Input::GetMousePosition();
 
 			m_Window->OnUpdate();
 		}

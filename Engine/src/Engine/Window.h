@@ -2,7 +2,6 @@
 #include "Engine/Core.h"
 #include "Engine/Events/Event.h"
 #include "Renderer.h"
-#include <SDL.h>
 
 namespace Engine {
 
@@ -19,43 +18,27 @@ namespace Engine {
 		{ }
 	};
 
-	class Window 
+	class ENGINE_API Window 
 	{
 	public:
 		using EventCallbackFn = std::function<void(Event&)>;
 
-		Window(const WindowProps& props);
-		~Window();
+		// Factory method
+		static Window* Create(const WindowProps& props = WindowProps());
 
-		void OnUpdate();
+		virtual ~Window() = default;
 
-		inline unsigned int GetWidth() const { return m_Data.Width; }
-		inline unsigned int GetHeight() const { return m_Data.Height; }
-		inline Renderer& GetRenderer() { return *m_Renderer; }
-		inline SDL_Window* GetSDLWindow() { return m_SDLWindow; }
+		virtual void OnUpdate() = 0;
+
+		virtual unsigned int GetWidth() const = 0;
+		virtual unsigned int GetHeight() const = 0;
 
 		// Window Attributes
-		inline void SetEventCallback(const EventCallbackFn& callback) { m_Data.EventCallback = callback; }
-		void SetVSync(bool enabled);
-		bool IsVSync() const;
+		virtual void SetEventCallback(const EventCallbackFn& callback) = 0;
+		virtual void SetVSync(bool enabled) = 0;
+		virtual bool IsVSync() const = 0;
 
-		static Window* Create(const WindowProps& props = WindowProps());
-	private:
-		virtual void Init(const WindowProps& props);
-		virtual void ShutDown();
-	private:
-		SDL_Window* m_SDLWindow;
-		std::unique_ptr<Renderer> m_Renderer;
-
-		struct WindowData
-		{
-			std::string Title;
-			unsigned int Width, Height;
-			bool VSync;
-
-			EventCallbackFn EventCallback;
-		};
-
-		WindowData m_Data;
+		virtual void* GetNativeWindow() const = 0;
+		virtual Renderer& GetRenderer() = 0;
 	};
 }

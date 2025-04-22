@@ -115,23 +115,12 @@ project "TerrariaClone"
 	includedirs
 	{
 		"Engine/vendor/spdlog/include",
-		"Engine/vendor/SDL2/include",
-        "Engine/vendor/SDL2_image/include",
 		"Engine/src"
-	}
-
-	libdirs
-	{
-		"Engine/vendor/SDL2/lib/x64",
-		"Engine/vendor/SDL2_image/lib/x64"
 	}
 
 	links
 	{
-		"Engine",
-		"SDL2main.lib",
-		"SDL2.lib",
-		"SDL2_image.lib"
+		"Engine"
 	}
 
 	filter "system:windows"

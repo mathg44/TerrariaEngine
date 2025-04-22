@@ -9,12 +9,15 @@ public:
 
 	void OnUpdate() override
 	{
-		ENG_INFO("ExampleLayer::Update");
+		if (Engine::Input::IsKeyPressed(ENG_SCANCODE_A))
+		{
+			ENG_TRACE("A key pressed!");
+		}
 	}
 
 	void OnEvent(Engine::Event& event) override
 	{
-		ENG_TRACE("{0}", event.ToString());
+		// ENG_TRACE("{0}", event.ToString());
 	}
 };
 
