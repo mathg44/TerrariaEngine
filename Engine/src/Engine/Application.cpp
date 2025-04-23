@@ -17,6 +17,9 @@ namespace Engine {
 
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(ENG_BIND_EVENT_FN(Application::OnEvent));
+
+		m_ImGuiLayer = new ImGuiLayer();
+		PushOverlay(m_ImGuiLayer);
 	}
 	Application::~Application()
 	{
@@ -70,10 +73,23 @@ namespace Engine {
 	{
 		while (m_IsRunning)
 		{
+			// Clear the screen
+			m_Window->GetRenderer().Clear();
+
 			for (Layer* layer : m_LayerStack)
 			{
 				layer->OnUpdate();
 			}
+
+			m_ImGuiLayer->Begin();
+			for (Layer* layer : m_LayerStack)
+			{
+				layer->OnImGuiRender();
+			}
+			m_ImGuiLayer->End();
+
+			// Present final frame
+			m_Window->GetRenderer().Present();
 
 			// Testing Input
 			//auto [x, y] = Input::GetMousePosition();

@@ -1,5 +1,7 @@
 #include <Engine.h>
 
+#include <imgui/imgui.h>
+
 class ExampleLayer : public Engine::Layer
 {
 public:
@@ -15,6 +17,13 @@ public:
 		}
 	}
 
+	virtual void OnImGuiRender() override
+	{
+		ImGui::Begin("Test");
+		ImGui::Text("Hello World");
+		ImGui::End();
+	}
+
 	void OnEvent(Engine::Event& event) override
 	{
 		// ENG_TRACE("{0}", event.ToString());
@@ -27,7 +36,6 @@ public:
 	TerrariaApp()
 	{
 		PushLayer(new ExampleLayer());
-		PushOverlay(new Engine::ImGuiLayer());
 	}
 
 	~TerrariaApp()

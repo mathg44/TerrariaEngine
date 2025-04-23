@@ -8,6 +8,8 @@
 #include "Events/MouseEvent.h"
 #include "LayerStack.h"
 
+#include "Engine/ImGui/ImGuiLayer.h"
+
 namespace Engine {
 
 	class ENGINE_API Application
@@ -30,6 +32,7 @@ namespace Engine {
 		inline static Application& Get() { return *s_Instance; }
 	private:
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_IsRunning = true;
 		LayerStack m_LayerStack;
 	private:

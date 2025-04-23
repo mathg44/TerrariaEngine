@@ -50,6 +50,11 @@ project "Engine"
     -- Then exclude ImGui files from using PCH
     filter { "files:Engine/vendor/imgui/**.cpp" }
         flags { "NoPCH" }
+        defines { "IMGUI_API=__declspec(dllexport)" }
+    filter { }
+    
+    filter { "files:Engine/src/**.cpp" }
+        defines { "IMGUI_API=__declspec(dllexport)" }
     filter { }
 
 	includedirs
@@ -123,7 +128,8 @@ project "TerrariaClone"
 	{
 		"Engine/vendor/spdlog/include",
 		"Engine/src",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"Engine/vendor"
 	}
 
 	links
@@ -137,7 +143,8 @@ project "TerrariaClone"
 
 		defines
 		{
-			"ENG_PLATFORM_WINDOWS"
+			"ENG_PLATFORM_WINDOWS",
+			"IMGUI_API=__declspec(dllimport)"
 		}
 
 		buildoptions { "/utf-8" }
