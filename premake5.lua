@@ -9,6 +9,10 @@ workspace "TerrariaEngine"
 
 	outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+	-- Include directories relative to root folder (solution dir)
+	IncludeDir = {}
+	IncludeDir["glm"] = "Engine/vendor/glm"
+
 	startproject "TerrariaClone"
 
 project "Engine"
@@ -28,6 +32,8 @@ project "Engine"
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
 
 	files
@@ -52,7 +58,8 @@ project "Engine"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{prj.name}/vendor/SDL2/include",
         "%{prj.name}/vendor/SDL2_image/include",
-		"%{prj.name}/vendor/imgui"
+		"%{prj.name}/vendor/imgui",
+		"%{IncludeDir.glm}"
 	}
 
 	libdirs
@@ -115,7 +122,8 @@ project "TerrariaClone"
 	includedirs
 	{
 		"Engine/vendor/spdlog/include",
-		"Engine/src"
+		"Engine/src",
+		"%{IncludeDir.glm}"
 	}
 
 	links
